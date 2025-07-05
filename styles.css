@@ -1,0 +1,149 @@
+/* AI Text Formatter Plugin Styles */
+
+/* Format selection modal styles */
+.ai-formatter-preview {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: var(--background-secondary);
+    border-radius: 6px;
+    border: 1px solid var(--background-modifier-border);
+}
+
+.ai-formatter-preview h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.ai-formatter-preview-text {
+    margin: 0;
+    font-family: var(--font-monospace);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--text-normal);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.ai-formatter-options {
+    margin: 1.5rem 0;
+}
+
+.ai-formatter-options .setting-item {
+    border: 1px solid var(--background-modifier-border);
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    background: var(--background-primary);
+    transition: all 0.2s ease;
+}
+
+.ai-formatter-options .setting-item:hover {
+    border-color: var(--interactive-accent);
+    background: var(--background-secondary);
+}
+
+.ai-formatter-options .setting-item-name {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.ai-formatter-options .setting-item-description {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+}
+
+/* Modal button container */
+.modal-button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--background-modifier-border);
+}
+
+/* Settings tab enhancements */
+.setting-item textarea {
+    min-height: 100px;
+    font-family: var(--font-monospace);
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.setting-item input[type="password"] {
+    font-family: var(--font-monospace);
+}
+
+/* Loading state styles */
+.ai-formatter-loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.ai-formatter-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--interactive-accent);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: ai-formatter-spin 1s linear infinite;
+}
+
+@keyframes ai-formatter-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Context menu icons */
+.menu-item-icon.wand-glyph::before {
+    content: "🪄";
+}
+
+.menu-item-icon.list-ordered::before {
+    content: "📝";
+}
+
+.menu-item-icon.align-left::before {
+    content: "📄";
+}
+
+.menu-item-icon.check-square::before {
+    content: "✅";
+}
+
+/* Success/error states */
+.ai-formatter-success {
+    color: var(--text-success);
+}
+
+.ai-formatter-error {
+    color: var(--text-error);
+}
+
+.ai-formatter-warning {
+    color: var(--text-warning);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .ai-formatter-options .setting-item {
+        padding: 0.75rem;
+    }
+    
+    .ai-formatter-preview {
+        padding: 0.75rem;
+    }
+    
+    .modal-button-container {
+        flex-direction: column;
+    }
+}
