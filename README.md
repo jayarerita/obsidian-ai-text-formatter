@@ -1,5 +1,10 @@
 # AI Text Formatter for Obsidian
 
+[![Tests](https://github.com/your-username/obsidian-ai-text-formatter/actions/workflows/test.yml/badge.svg)](https://github.com/your-username/obsidian-ai-text-formatter/actions/workflows/test.yml)
+[![Test Coverage](https://codecov.io/gh/your-username/obsidian-ai-text-formatter/branch/main/graph/badge.svg)](https://codecov.io/gh/your-username/obsidian-ai-text-formatter)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Obsidian Plugin](https://img.shields.io/badge/Obsidian-Plugin-purple.svg)](https://obsidian.md/)
+
 An Obsidian plugin that uses AI services (OpenAI GPT, Google Gemini, Anthropic Claude) to reformat selected text into structured notes, flowing prose, or actionable to-do lists. Perfect for cleaning up voice-to-text transcriptions and improving text formatting.
 
 ## ✨ Features
@@ -288,15 +293,39 @@ npm run dev
 
 ### Running Tests
 
+The plugin includes basic test coverage to ensure core functionality works correctly.
+
 ```bash
-# Run unit tests
+# Run basic tests
 npm test
 
-# Run integration tests
-npm run test:integration
+# Run tests with coverage
+npx jest --coverage
 
-# Run all tests with coverage
-npm run test:coverage
+# Run specific test file
+npx jest tests/basic.test.ts
+```
+
+### Test Coverage
+
+Current test coverage includes:
+- **Core Types**: Validation of enums and default settings
+- **Prompt Builder**: Testing prompt generation and validation
+- **Basic Functionality**: Core plugin functionality tests
+
+The test suite is designed to be lightweight and focused on critical functionality to ensure the plugin works reliably in the Obsidian environment.
+
+### Code Quality
+
+```bash
+# Run linting
+npm run lint
+
+# Fix linting issues automatically
+npm run lint:fix
+
+# Type checking
+npx tsc --noEmit --skipLibCheck
 ```
 
 ## 🤝 Contributing
