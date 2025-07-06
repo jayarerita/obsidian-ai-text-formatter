@@ -1,0 +1,50 @@
+# GitHub Pages Configuration for AI Text Formatter
+
+# Site settings
+title: "AI Text Formatter for Obsidian"
+description: "Transform your text using AI services into structured notes, flowing prose, or actionable to-do lists."
+url: "https://jayarerita.github.io"
+baseurl: "/obsidian-ai-text-formatter"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Exclude files from processing
+exclude:
+  - README.md
+  - LICENSE
+  - package.json
+  - package-lock.json
+  - node_modules/
+  - .gitignore
+  - .github/
+
+# Include files
+include:
+  - _headers
+  - _redirects
+
+# Plugin settings
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# SEO settings
+author: "AI Text Formatter Team"
+twitter:
+  username: your-twitter-handle
+  card: summary_large_image
+
+social:
+  name: AI Text Formatter
+  links:
+    - https://github.com/jayarerita/obsidian-ai-text-formatter
+
+# Google Analytics (optional)
+# google_analytics: UA-XXXXXXXX-X
+
+# Theme (using default GitHub Pages theme)
+theme: minima

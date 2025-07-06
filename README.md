@@ -1,7 +1,7 @@
 # AI Text Formatter for Obsidian
 
-[![Tests](https://github.com/your-username/obsidian-ai-text-formatter/actions/workflows/test.yml/badge.svg)](https://github.com/your-username/obsidian-ai-text-formatter/actions/workflows/test.yml)
-[![Test Coverage](https://codecov.io/gh/your-username/obsidian-ai-text-formatter/branch/main/graph/badge.svg)](https://codecov.io/gh/your-username/obsidian-ai-text-formatter)
+[![Tests](https://github.com/jayarerita/obsidian-ai-text-formatter/actions/workflows/test.yml/badge.svg)](https://github.com/jayarerita/obsidian-ai-text-formatter/actions/workflows/test.yml)
+[![Test Coverage](https://codecov.io/gh/jayarerita/obsidian-ai-text-formatter/branch/main/graph/badge.svg)](https://codecov.io/gh/jayarerita/obsidian-ai-text-formatter)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Obsidian Plugin](https://img.shields.io/badge/Obsidian-Plugin-purple.svg)](https://obsidian.md/)
 
@@ -278,7 +278,7 @@ Enable browser developer tools (F12) to see detailed error information and API c
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/obsidian-ai-text-formatter.git
+git clone https://github.com/jayarerita/obsidian-ai-text-formatter.git
 cd obsidian-ai-text-formatter
 
 # Install dependencies
@@ -346,10 +346,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🆘 Support
 
-- **🐛 Issues**: Report bugs on [GitHub Issues](https://github.com/your-username/obsidian-ai-text-formatter/issues)
-- **💬 Discussions**: Join conversations on [GitHub Discussions](https://github.com/your-username/obsidian-ai-text-formatter/discussions)
-- **📚 Documentation**: Full docs in the [Wiki](https://github.com/your-username/obsidian-ai-text-formatter/wiki)
-- **💖 Sponsor**: Support development via [GitHub Sponsors](https://github.com/sponsors/your-username)
+- **🐛 Issues**: Report bugs on [GitHub Issues](https://github.com/jayarerita/obsidian-ai-text-formatter/issues)
+- **💬 Discussions**: Join conversations on [GitHub Discussions](https://github.com/jayarerita/obsidian-ai-text-formatter/discussions)
+- **📚 Documentation**: Full docs in the [Wiki](https://github.com/jayarerita/obsidian-ai-text-formatter/wiki)
+- **💖 Sponsor**: Support development via [GitHub Sponsors](https://github.com/sponsors/jayarerita)
 
 ## 📈 Changelog
 

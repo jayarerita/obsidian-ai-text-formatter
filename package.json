@@ -30,12 +30,12 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/your-username/obsidian-ai-text-formatter.git"
+		"url": "https://github.com/jayarerita/obsidian-ai-text-formatter.git"
 	},
 	"bugs": {
-		"url": "https://github.com/your-username/obsidian-ai-text-formatter/issues"
+		"url": "https://github.com/jayarerita/obsidian-ai-text-formatter/issues"
 	},
-	"homepage": "https://github.com/your-username/obsidian-ai-text-formatter#readme",
+	"homepage": "https://github.com/jayarerita/obsidian-ai-text-formatter#readme",
 	"dependencies": {
 		"@google/generative-ai": "^0.21.0"
 	},

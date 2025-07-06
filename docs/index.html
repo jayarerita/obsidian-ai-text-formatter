@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Text Formatter for Obsidian - Transform your text using AI services like OpenAI GPT, Google Gemini, and Anthropic Claude into structured notes, flowing prose, or actionable to-do lists.">
+    <meta name="keywords" content="Obsidian, plugin, AI, text formatting, OpenAI, GPT, Gemini, Claude, notes, productivity">
+    <meta name="author" content="AI Text Formatter Team">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jayarerita.github.io/obsidian-ai-text-formatter/">
+    <meta property="og:title" content="AI Text Formatter for Obsidian">
+    <meta property="og:description" content="Transform your text using AI into structured notes, flowing prose, or actionable to-do lists.">
+    <meta property="og:image" content="https://jayarerita.github.io/obsidian-ai-text-formatter/assets/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://jayarerita.github.io/obsidian-ai-text-formatter/">
+    <meta property="twitter:title" content="AI Text Formatter for Obsidian">
+    <meta property="twitter:description" content="Transform your text using AI into structured notes, flowing prose, or actionable to-do lists.">
+    <meta property="twitter:image" content="https://jayarerita.github.io/obsidian-ai-text-formatter/assets/og-image.png">
+
+    <title>AI Text Formatter for Obsidian</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mobile.css">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <nav class="nav container" role="navigation" aria-label="Main navigation">
+            <div class="nav-brand">
+                <img src="assets/logo.svg" alt="AI Text Formatter" class="logo" width="32" height="32">
+                <span class="brand-text">AI Text Formatter</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#demo" class="nav-link">Demo</a></li>
+                <li><a href="#installation" class="nav-link">Installation</a></li>
+                <li><a href="#docs" class="nav-link">Docs</a></li>
+                <li><a href="https://github.com/jayarerita/obsidian-ai-text-formatter" class="nav-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github" aria-hidden="true"></i>
+                    <span class="sr-only">GitHub Repository</span>
+                </a></li>
+            </ul>
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" role="main">
+        <!-- Hero Section -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 id="hero-title" class="hero-title">
+                            Transform Your Text with <span class="gradient-text">AI Power</span>
+                        </h1>
+                        <p class="hero-description">
+                            Turn messy voice transcriptions and rough notes into beautifully formatted content using OpenAI GPT, Google Gemini, and Anthropic Claude. Perfect for Obsidian users who want to streamline their note-taking workflow.
+                        </p>
+                        <div class="hero-actions">
+                            <a href="#installation" class="btn btn-primary">
+                                <i class="fas fa-download" aria-hidden="true"></i>
+                                Install Plugin
+                            </a>
+                            <a href="#demo" class="btn btn-secondary">
+                                <i class="fas fa-play" aria-hidden="true"></i>
+                                Watch Demo
+                            </a>
+                        </div>
+                        <div class="hero-badges">
+                            <img src="https://img.shields.io/github/stars/jayarerita/obsidian-ai-text-formatter?style=social" alt="GitHub stars" class="badge">
+                            <img src="https://img.shields.io/badge/Obsidian-Plugin-purple.svg" alt="Obsidian Plugin" class="badge">
+                            <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License" class="badge">
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="hero-image-placeholder">
+                            <!-- Replace with your hero image/animation -->
+                            <div class="placeholder-content">
+                                <i class="fas fa-magic fa-3x" aria-hidden="true"></i>
+                                <p>Hero Image/Animation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features" aria-labelledby="features-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="features-title" class="section-title">Powerful Features</h2>
+                    <p class="section-description">Everything you need to transform your text with AI</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="feature-title">Multiple AI Services</h3>
+                        <p class="feature-description">
+                            Support for OpenAI GPT (3.5/4/4o), Google Gemini (1.5), and Anthropic Claude (3/3.5) with model selection for optimal performance.
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-list-alt" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="feature-title">Three Format Types</h3>
+                        <p class="feature-description">
+                            Transform text into structured notes with headers, flowing prose with proper grammar, or actionable to-do lists with checkboxes.
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mouse-pointer" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="feature-title">Seamless Integration</h3>
+                        <p class="feature-description">
+                            Right-click context menu and command palette integration. Select text, choose format, and watch the magic happen.
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-cog" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="feature-title">Customizable Prompts</h3>
+                        <p class="feature-description">
+                            Customize AI prompts for each format type to match your specific needs and writing style.
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="feature-title">Secure & Private</h3>
+                        <p class="feature-description">
+                            API keys stored locally and securely. Direct API calls with no intermediary servers processing your content.
+                        </p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="feature-title">Smart Error Handling</h3>
+                        <p class="feature-description">
+                            Comprehensive error handling with user-friendly messages, connection testing, and retry logic.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo Section -->
+        <section id="demo" class="demo" aria-labelledby="demo-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="demo-title" class="section-title">See It In Action</h2>
+                    <p class="section-description">Watch how AI Text Formatter transforms your content</p>
+                </div>
+                
+                <!-- Video Demo -->
+                <div class="demo-video">
+                    <div class="video-placeholder">
+                        <!-- Replace with your video embed -->
+                        <div class="placeholder-content">
+                            <i class="fas fa-video fa-3x" aria-hidden="true"></i>
+                            <p>Demo Video Placeholder</p>
+                            <small>Add your video embed here</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Before/After Examples -->
+                <div class="demo-examples">
+                    <div class="example-card">
+                        <h3 class="example-title">Voice Transcription Input</h3>
+                        <div class="code-block">
+                            <pre><code>So I was thinking about the project and we need to do several things first we need to set up the database then we need to create the user interface and also we should probably test everything before we deploy it to production oh and don't forget to update the documentation</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="transformation-arrow">
+                        <i class="fas fa-arrow-down" aria-hidden="true"></i>
+                        <span class="sr-only">Transforms to</span>
+                    </div>
+                    
+                    <div class="format-examples">
+                        <div class="format-tab-container">
+                            <div class="format-tabs" role="tablist" aria-label="Format examples">
+                                <button class="format-tab active" role="tab" aria-selected="true" aria-controls="notes-panel" id="notes-tab">
+                                    <i class="fas fa-list-ul" aria-hidden="true"></i>
+                                    Notes
+                                </button>
+                                <button class="format-tab" role="tab" aria-selected="false" aria-controls="prose-panel" id="prose-tab">
+                                    <i class="fas fa-align-left" aria-hidden="true"></i>
+                                    Prose
+                                </button>
+                                <button class="format-tab" role="tab" aria-selected="false" aria-controls="todo-panel" id="todo-tab">
+                                    <i class="fas fa-check-square" aria-hidden="true"></i>
+                                    To-Do
+                                </button>
+                            </div>
+                            
+                            <div class="format-panels">
+                                <div class="format-panel active" role="tabpanel" id="notes-panel" aria-labelledby="notes-tab">
+                                    <div class="code-block">
+                                        <pre><code># Project Tasks
+
+## Database Setup
+- Set up the database infrastructure
+
+## User Interface Development  
+- Create the user interface components
+- Ensure responsive design
+
+## Testing & Deployment
+- Test all functionality thoroughly
+- Deploy to production environment
+- Update project documentation</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="format-panel" role="tabpanel" id="prose-panel" aria-labelledby="prose-tab">
+                                    <div class="code-block">
+                                        <pre><code>I was considering the project requirements and identified several key tasks that need to be completed. First, we need to establish the database infrastructure to support our application. Following that, we should focus on creating an intuitive user interface that meets our users' needs.
+
+It's crucial that we thoroughly test all functionality before deploying to the production environment. Additionally, we must ensure that our project documentation is updated to reflect any changes made during the development process.</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="format-panel" role="tabpanel" id="todo-panel" aria-labelledby="todo-tab">
+                                    <div class="code-block">
+                                        <pre><code>- [ ] Set up database infrastructure
+- [ ] Create user interface components
+- [ ] Implement responsive design
+- [ ] Test all functionality thoroughly
+- [ ] Deploy to production environment
+- [ ] Update project documentation</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screenshots Section -->
+        <section class="screenshots" aria-labelledby="screenshots-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="screenshots-title" class="section-title">Screenshots</h2>
+                    <p class="section-description">See the plugin in action within Obsidian</p>
+                </div>
+                <div class="screenshots-grid">
+                    <div class="screenshot-item">
+                        <div class="screenshot-placeholder">
+                            <div class="placeholder-content">
+                                <i class="fas fa-image fa-2x" aria-hidden="true"></i>
+                                <p>Context Menu</p>
+                            </div>
+                        </div>
+                        <h3 class="screenshot-title">Right-Click Context Menu</h3>
+                        <p class="screenshot-description">Easy access to formatting options directly from the editor</p>
+                    </div>
+                    <div class="screenshot-item">
+                        <div class="screenshot-placeholder">
+                            <div class="placeholder-content">
+                                <i class="fas fa-image fa-2x" aria-hidden="true"></i>
+                                <p>Settings Panel</p>
+                            </div>
+                        </div>
+                        <h3 class="screenshot-title">Settings Configuration</h3>
+                        <p class="screenshot-description">Configure AI services, API keys, and custom prompts</p>
+                    </div>
+                    <div class="screenshot-item">
+                        <div class="screenshot-placeholder">
+                            <div class="placeholder-content">
+                                <i class="fas fa-image fa-2x" aria-hidden="true"></i>
+                                <p>Format Selection</p>
+                            </div>
+                        </div>
+                        <h3 class="screenshot-title">Format Selection Modal</h3>
+                        <p class="screenshot-description">Choose your desired output format with preview</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation Section -->
+        <section id="installation" class="installation" aria-labelledby="installation-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="installation-title" class="section-title">Easy Installation</h2>
+                    <p class="section-description">Get started in minutes</p>
+                </div>
+                <div class="installation-methods">
+                    <div class="method-card">
+                        <div class="method-icon">
+                            <i class="fas fa-store" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="method-title">Community Plugins (Recommended)</h3>
+                        <ol class="method-steps">
+                            <li>Open Obsidian Settings</li>
+                            <li>Go to Community Plugins</li>
+                            <li>Search for "AI Text Formatter"</li>
+                            <li>Click Install and Enable</li>
+                        </ol>
+                        <div class="method-status">
+                            <span class="status-badge coming-soon">Coming Soon</span>
+                        </div>
+                    </div>
+                    <div class="method-card">
+                        <div class="method-icon">
+                            <i class="fas fa-download" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="method-title">Manual Installation</h3>
+                        <ol class="method-steps">
+                            <li>Download the latest release files</li>
+                            <li>Create folder in <code>.obsidian/plugins/</code></li>
+                            <li>Copy files to the folder</li>
+                            <li>Restart Obsidian and enable plugin</li>
+                        </ol>
+                        <div class="method-actions">
+                            <a href="https://github.com/jayarerita/obsidian-ai-text-formatter/releases/latest" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-download" aria-hidden="true"></i>
+                                Download Latest
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Documentation Section -->
+        <section id="docs" class="docs" aria-labelledby="docs-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="docs-title" class="section-title">Documentation</h2>
+                    <p class="section-description">Everything you need to know</p>
+                </div>
+                <div class="docs-grid">
+                    <a href="https://github.com/jayarerita/obsidian-ai-text-formatter#setup" class="doc-card" target="_blank" rel="noopener noreferrer">
+                        <div class="doc-icon">
+                            <i class="fas fa-rocket" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="doc-title">Getting Started</h3>
+                        <p class="doc-description">Setup guide and basic configuration</p>
+                    </a>
+                    <a href="https://github.com/jayarerita/obsidian-ai-text-formatter#usage" class="doc-card" target="_blank" rel="noopener noreferrer">
+                        <div class="doc-icon">
+                            <i class="fas fa-book" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="doc-title">User Guide</h3>
+                        <p class="doc-description">How to use all features effectively</p>
+                    </a>
+                    <a href="https://github.com/jayarerita/obsidian-ai-text-formatter#troubleshooting" class="doc-card" target="_blank" rel="noopener noreferrer">
+                        <div class="doc-icon">
+                            <i class="fas fa-tools" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="doc-title">Troubleshooting</h3>
+                        <p class="doc-description">Common issues and solutions</p>
+                    </a>
+                    <a href="https://github.com/jayarerita/obsidian-ai-text-formatter/blob/main/TESTING.md" class="doc-card" target="_blank" rel="noopener noreferrer">
+                        <div class="doc-icon">
+                            <i class="fas fa-code" aria-hidden="true"></i>
+                        </div>
+                        <h3 class="doc-title">Development</h3>
+                        <p class="doc-description">Contributing and development guide</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta" aria-labelledby="cta-title">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 id="cta-title" class="cta-title">Ready to Transform Your Text?</h2>
+                    <p class="cta-description">
+                        Join thousands of Obsidian users who are already using AI to enhance their note-taking workflow.
+                    </p>
+                    <div class="cta-actions">
+                        <a href="#installation" class="btn btn-primary btn-large">
+                            <i class="fas fa-download" aria-hidden="true"></i>
+                            Get Started Now
+                        </a>
+                        <a href="https://github.com/jayarerita/obsidian-ai-text-formatter" class="btn btn-outline btn-large" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                            View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="assets/logo.svg" alt="AI Text Formatter" class="footer-logo" width="24" height="24">
+                        <span class="footer-brand-text">AI Text Formatter</span>
+                    </div>
+                    <p class="footer-description">
+                        Transform your text with AI power. Made with ❤️ for the Obsidian community.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com/jayarerita/obsidian-ai-text-formatter" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                        <li><a href="https://github.com/jayarerita/obsidian-ai-text-formatter/issues" target="_blank" rel="noopener noreferrer">Issues</a></li>
+                        <li><a href="https://github.com/jayarerita/obsidian-ai-text-formatter/releases" target="_blank" rel="noopener noreferrer">Releases</a></li>
+                        <li><a href="https://obsidian.md/" target="_blank" rel="noopener noreferrer">Obsidian</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-title">Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com/jayarerita/obsidian-ai-text-formatter#setup" target="_blank" rel="noopener noreferrer">Documentation</a></li>
+                        <li><a href="https://github.com/jayarerita/obsidian-ai-text-formatter#troubleshooting" target="_blank" rel="noopener noreferrer">Troubleshooting</a></li>
+                        <li><a href="https://github.com/jayarerita/obsidian-ai-text-formatter/discussions" target="_blank" rel="noopener noreferrer">Discussions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © 2024 AI Text Formatter. Licensed under <a href="https://opensource.org/licenses/MIT" target="_blank" rel="noopener noreferrer">MIT License</a>.
+                </p>
+                <div class="footer-badges">
+                    <img src="https://img.shields.io/github/stars/jayarerita/obsidian-ai-text-formatter?style=social" alt="GitHub stars" class="footer-badge">
+                    <img src="https://img.shields.io/github/license/jayarerita/obsidian-ai-text-formatter" alt="License" class="footer-badge">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
