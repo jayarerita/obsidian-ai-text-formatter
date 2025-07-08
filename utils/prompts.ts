@@ -11,6 +11,10 @@ export const DEFAULT_PROMPTS = {
 
     [FormatType.TODO]: `Please convert the following text into a well-organized to-do list using markdown checkbox syntax (- [ ]). Extract actionable items and organize them logically. Include any relevant context or details as sub-items:
 
+{text}`,
+
+[FormatType.CUSTOM]: `Please convert the following text into a poem. Include any relevant context or details as sub-items:
+
 {text}`
 };
 

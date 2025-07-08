@@ -1,3 +1,5 @@
+import OpenAI from 'openai';
+
 import { BaseAIService } from './base-service';
 import { AIResponse } from '../types';
 
@@ -44,84 +46,119 @@ export class OpenAIService extends BaseAIService {
 
     constructor(apiKey: string, maxTokens: number = 1000) {
         super(apiKey, maxTokens);
+        
+        // Set conservative rate limiting for OpenAI
+        // Free tier: 3 requests per minute, Paid tier: 3500 requests per minute
+        // We'll use 2 seconds between requests to be safe for free tier users
+        this.setMinRequestInterval(2000);
     }
 
     async generateText(prompt: string): Promise<AIResponse> {
         if (!this.validateApiKey()) {
-            return this.createErrorResponse('Invalid OpenAI API key');
+            return this.createErrorResponse('Invalid OpenAI API key. Please check your API key in settings.');
         }
+
+        const client = new OpenAI({
+            apiKey: this.apiKey,
+            dangerouslyAllowBrowser: true // Needed to run in "browserlike env"
+          });
 
         try {
             console.log(`OpenAI: Using model ${this.modelName} with prompt length: ${prompt.length}`);
 
-            const requestBody: OpenAIRequest = {
+            // const requestBody: OpenAIRequest = {
+            //     model: this.modelName,
+            //     messages: [
+            //         {
+            //             role: 'user',
+            //             content: prompt
+            //         }
+            //     ],
+            //     max_tokens: this.maxTokens,
+            //     temperature: 0.7,
+            //     top_p: 0.9,
+            //     frequency_penalty: 0.0,
+            //     presence_penalty: 0.0
+            // };
+
+            const response = await client.responses.create({
                 model: this.modelName,
-                messages: [
-                    {
-                        role: 'user',
-                        content: prompt
-                    }
-                ],
-                max_tokens: this.maxTokens,
-                temperature: 0.7,
-                top_p: 0.9,
-                frequency_penalty: 0.0,
-                presence_penalty: 0.0
-            };
+                instructions: 'You are a formatting assistant for helping with managing my notes.',
+                input: prompt,
+                max_output_tokens: this.maxTokens
+   
+              });
 
-            const response = await this.makeHttpRequest(`${this.baseUrl}/chat/completions`, {
-                method: 'POST',
-                headers: {
-                    'Authorization': `Bearer ${this.apiKey}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(requestBody)
-            });
-
-            if (!response.ok) {
-                const errorData: OpenAIError = await response.json();
-                throw new Error(`HTTP ${response.status}: ${errorData.error?.message || response.statusText}`);
+            if (response.error){
+                console.log(response.error.message)
+                this.createErrorResponse(response.error.message);
             }
 
-            const data: OpenAIResponse = await response.json();
-
-            if (data.choices && data.choices.length > 0) {
-                const content = data.choices[0].message.content.trim();
-                const tokensUsed = data.usage?.total_tokens;
+            if (response.status === "completed") {
+                const content = response.output_text
+                const tokensUsed = response.usage?.output_tokens
                 
                 console.log(`OpenAI: Successfully generated ${content.length} characters, used ${tokensUsed || 'unknown'} tokens`);
                 return this.createSuccessResponse(content, tokensUsed);
             } else {
-                return this.createErrorResponse('No response generated from OpenAI');
+                return this.createErrorResponse('No response generated from OpenAI. Please try again.');
             }
         } catch (error) {
             console.error('OpenAI API Error:', error);
-            
-            // Handle specific OpenAI API errors
-            if (error.message?.includes('invalid_api_key') || error.message?.includes('Incorrect API key')) {
-                return this.createErrorResponse('Invalid OpenAI API key. Please check your API key in settings.');
-            } else if (error.message?.includes('insufficient_quota') || error.message?.includes('quota')) {
-                return this.createErrorResponse('OpenAI API quota exceeded. Please check your usage limits or add billing information.');
-            } else if (error.message?.includes('rate_limit_exceeded') || error.message?.includes('rate limit')) {
-                return this.createErrorResponse('OpenAI API rate limit exceeded. Please try again later or upgrade your plan.');
-            } else if (error.message?.includes('model_not_found') || error.message?.includes('does not exist')) {
-                return this.createErrorResponse(`OpenAI model '${this.modelName}' not found. Please try a different model.`);
-            } else if (error.message?.includes('context_length_exceeded') || error.message?.includes('maximum context length')) {
-                return this.createErrorResponse('Text is too long for OpenAI API. Please select a shorter text or increase max tokens.');
-            } else if (error.message?.includes('content_filter') || error.message?.includes('safety')) {
-                return this.createErrorResponse('Content was blocked by OpenAI safety filters. Please try different text.');
-            } else if (error.message?.includes('401') || error.message?.includes('Unauthorized')) {
-                return this.createErrorResponse('Unauthorized access to OpenAI API. Please check your API key.');
-            } else if (error.message?.includes('403') || error.message?.includes('Forbidden')) {
-                return this.createErrorResponse('Access denied to OpenAI API. Please check your API key permissions.');
-            } else if (error.message?.includes('429')) {
-                return this.createErrorResponse('Too many requests to OpenAI API. Please wait and try again.');
-            } else if (error.message?.includes('500') || error.message?.includes('502') || error.message?.includes('503')) {
-                return this.createErrorResponse('OpenAI API is temporarily unavailable. Please try again later.');
-            } else {
-                return this.createErrorResponse(`OpenAI API error: ${error.message || 'Unknown error'}`);
-            }
+            return this.handleOpenAIError(error);
         }
+    }
+
+    private handleOpenAIError(error: any): AIResponse {
+        const errorMessage = error.message || error.toString();
+        
+        // Handle specific OpenAI API errors with user-friendly messages
+        if (errorMessage.includes('invalid_api_key') || errorMessage.includes('Incorrect API key')) {
+            return this.createErrorResponse('❌ Invalid OpenAI API key. Please check your API key in plugin settings.');
+        } 
+        
+        if (errorMessage.includes('insufficient_quota') || errorMessage.includes('quota')) {
+            return this.createErrorResponse('💳 OpenAI API quota exceeded. Please check your usage limits or add billing information to your OpenAI account.');
+        } 
+        
+        if (errorMessage.includes('Rate limit exceeded') || errorMessage.includes('rate limit') || errorMessage.includes('429')) {
+            return this.createErrorResponse('⏱️ OpenAI API rate limit exceeded. The plugin will automatically retry. If this persists, please wait a few minutes or upgrade your OpenAI plan.');
+        } 
+        
+        if (errorMessage.includes('model_not_found') || errorMessage.includes('does not exist')) {
+            return this.createErrorResponse(`🤖 OpenAI model '${this.modelName}' not found. Please select a different model in settings.`);
+        } 
+        
+        if (errorMessage.includes('context_length_exceeded') || errorMessage.includes('maximum context length')) {
+            return this.createErrorResponse('📏 Selected text is too long for the current OpenAI model. Please select shorter text or switch to a model with larger context window (like GPT-4 Turbo).');
+        } 
+        
+        if (errorMessage.includes('content_filter') || errorMessage.includes('safety')) {
+            return this.createErrorResponse('🛡️ Content was blocked by OpenAI safety filters. Please try with different text.');
+        } 
+        
+        if (errorMessage.includes('401') || errorMessage.includes('Unauthorized')) {
+            return this.createErrorResponse('🔐 Unauthorized access to OpenAI API. Please verify your API key is correct and active.');
+        } 
+        
+        if (errorMessage.includes('403') || errorMessage.includes('Forbidden')) {
+            return this.createErrorResponse('🚫 Access denied to OpenAI API. Your API key may not have the required permissions.');
+        } 
+        
+        if (errorMessage.includes('500') || errorMessage.includes('502') || errorMessage.includes('503')) {
+            return this.createErrorResponse('🔧 OpenAI API is temporarily unavailable. Please try again in a few minutes.');
+        }
+        
+        if (errorMessage.includes('timeout') || errorMessage.includes('TIMEOUT')) {
+            return this.createErrorResponse('⏰ Request timed out. Please try again with shorter text or check your internet connection.');
+        }
+        
+        if (errorMessage.includes('Network request failed')) {
+            return this.createErrorResponse('🌐 Network error occurred. Please check your internet connection and try again.');
+        }
+        
+        // Generic error with helpful context
+        return this.createErrorResponse(`❗ OpenAI API error: ${errorMessage}. Please try again or check your API key and settings.`);
     }
 
     validateApiKey(): boolean {

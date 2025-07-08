@@ -2,7 +2,6 @@ import { Plugin, Editor } from 'obsidian';
 import { SettingsManager } from './settings';
 import { TextProcessor } from './text-processor';
 import { AITextFormatterSettingTab } from './ui/settings-tab';
-import { FormatSelectionModal } from './ui/format-modal';
 import { FormatType } from './types';
 import { ErrorHandler } from './utils/error-handler';
 
@@ -64,12 +63,12 @@ export default class AITextFormatterPlugin extends Plugin {
             }
         });
 
-        // General reformat command that shows format selection
+        // Command for Custom format
         this.addCommand({
-            id: 'reformat-text',
-            name: 'Reformat selected text with AI',
+            id: 'reformat-to-custom',
+            name: 'Reformat selected text to custom format',
             editorCallback: async (editor) => {
-                await this.showFormatSelectionModal(editor);
+                await this.reformatSelectedText(editor, FormatType.CUSTOM);
             }
         });
     }
@@ -155,24 +154,13 @@ export default class AITextFormatterPlugin extends Plugin {
                 
                 // Only show context menu if text is selected
                 if (selectedText && selectedText.trim().length > 0) {
-                    // Add main menu item
-                    menu.addItem((item) => {
-                        item
-                            .setTitle('Reformat with AI')
-                            .setIcon('wand-glyph')
-                            .onClick(() => {
-                                // Show submenu with format options
-                                this.showFormatSelectionModal(editor);
-                            });
-                    });
-
                     // Add separator
                     menu.addSeparator();
 
                     // Add individual format options
                     menu.addItem((item) => {
                         item
-                            .setTitle('→ Notes Format')
+                            .setTitle('AI Format → Notes')
                             .setIcon('list-ordered')
                             .onClick(async () => {
                                 await this.reformatSelectedText(editor, FormatType.NOTES);
@@ -181,7 +169,7 @@ export default class AITextFormatterPlugin extends Plugin {
 
                     menu.addItem((item) => {
                         item
-                            .setTitle('→ Prose Format')
+                            .setTitle('AI Format → Prose')
                             .setIcon('align-left')
                             .onClick(async () => {
                                 await this.reformatSelectedText(editor, FormatType.PROSE);
@@ -190,33 +178,23 @@ export default class AITextFormatterPlugin extends Plugin {
 
                     menu.addItem((item) => {
                         item
-                            .setTitle('→ To-Do List')
+                            .setTitle('AI Format → To-Do List')
                             .setIcon('check-square')
                             .onClick(async () => {
                                 await this.reformatSelectedText(editor, FormatType.TODO);
                             });
                     });
+
+                    menu.addItem((item) => {
+                        item
+                            .setTitle('AI Format → Custom')
+                            .setIcon('check-square')
+                            .onClick(async () => {
+                                await this.reformatSelectedText(editor, FormatType.CUSTOM);
+                            });
+                    });
                 }
             })
         );
-    }
-
-    private async showFormatSelectionModal(editor: Editor): Promise<void> {
-        const selectedText = editor.getSelection();
-        
-        if (!selectedText || selectedText.trim().length === 0) {
-            ErrorHandler.showSimpleNotification('Please select some text first', 'warning');
-            return;
-        }
-
-        const modal = new FormatSelectionModal(
-            this.app,
-            selectedText,
-            async (format: FormatType) => {
-                await this.reformatSelectedText(editor, format);
-            }
-        );
-        
-        modal.open();
     }
 }

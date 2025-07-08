@@ -3,7 +3,8 @@
 export enum FormatType {
     NOTES = 'notes',
     PROSE = 'prose',
-    TODO = 'todo'
+    TODO = 'todo',
+    CUSTOM = 'custom'
 }
 
 export enum AIService {
@@ -42,6 +43,7 @@ export interface AITextFormatterSettings {
         notes: string;
         prose: string;
         todo: string;
+        custom: string;
     };
     maxTokens: number;
 }
@@ -61,7 +63,8 @@ export const DEFAULT_SETTINGS: AITextFormatterSettings = {
     customPrompts: {
         notes: '',
         prose: '',
-        todo: ''
+        todo: '',
+        custom: ''
     },
     maxTokens: 4000
 };

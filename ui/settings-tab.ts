@@ -278,6 +278,32 @@ export class AITextFormatterSettingTab extends PluginSettingTab {
                         this.display();
                     });
             });
+
+            // Custom Format Prompt
+            new Setting(containerEl)
+            .setName('Custom Format Prompt')
+            .setDesc('Custom prompt for reformatting text')
+            .addTextArea(text => {
+                text
+                    .setPlaceholder(PromptBuilder.getDefaultPrompt(FormatType.CUSTOM))
+                    .setValue(this.plugin.settingsManager.getCustomPrompt('custom'))
+                    .onChange(async (value) => {
+                        this.plugin.settingsManager.setCustomPrompt('custom', value);
+                        await this.plugin.settingsManager.saveSettings();
+                    });
+                text.inputEl.rows = 4;
+                text.inputEl.style.width = '100%';
+            })
+            .addButton(button => {
+                button
+                    .setButtonText('Reset')
+                    .setTooltip('Reset to default prompt')
+                    .onClick(async () => {
+                        this.plugin.settingsManager.setCustomPrompt('custom', '');
+                        await this.plugin.settingsManager.saveSettings();
+                        this.display();
+                    });
+            });
     }
 
     private addAdvancedSettings(): void {
