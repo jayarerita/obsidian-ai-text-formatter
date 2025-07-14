@@ -744,6 +744,23 @@ section {
     transform: scale(1.02);
 }
 
+.screenshot-img {
+    width: 100%;
+    background: cover;
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-6);
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-normal);
+}
+
+.screenshot-img:hover {
+    transform: scale(1.02);
+}
+
 .screenshot-title {
     font-size: var(--font-size-lg);
     margin-bottom: var(--spacing-3);
