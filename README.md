@@ -59,18 +59,15 @@ You'll need an API key from at least one of these services:
 
 #### OpenAI (Recommended for beginners)
 - Get your API key from [OpenAI Platform](https://platform.openai.com/api-keys)
-- Models: GPT-3.5-turbo (cost-effective), GPT-4o (most capable)
-- Pricing: Starting from $0.0005 per 1K tokens
+- Multiple models available with different capabilities and costs
 
 #### Google Gemini (Best value)
 - Get your API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
-- Models: Gemini-1.5-flash (fastest), Gemini-1.5-pro (most capable)
-- Pricing: Very competitive, generous free tier
+- Competitive pricing with generous free tier
 
 #### Anthropic Claude (Best for complex tasks)
 - Get your API key from [Anthropic Console](https://console.anthropic.com/)
-- Models: Claude-3.5-sonnet (balanced), Claude-3.5-haiku (fast)
-- Pricing: Premium pricing for premium quality
+- Premium quality models for complex text processing
 
 ### 2. Configure the Plugin
 
@@ -165,40 +162,84 @@ is updated to reflect any changes made during the development process.
 
 ### Model Selection Guide
 
-Each AI service offers multiple models with different capabilities, speeds, and costs. You can select the optimal model for your specific needs:
+Each AI service offers multiple models with different capabilities, speeds, and costs. You can select the optimal model for your specific needs based on:
 
-#### For Speed & Cost Efficiency:
-- **OpenAI**: `gpt-3.5-turbo` or `gpt-4o-mini`
-- **Gemini**: `gemini-1.5-flash`
-- **Claude**: `claude-3-5-haiku-20241022`
-
-#### For Best Quality:
-- **OpenAI**: `gpt-4o` or `gpt-4-turbo-preview`
-- **Gemini**: `gemini-1.5-pro`
-- **Claude**: `claude-3-5-sonnet-20241022`
-
-#### For Long Documents:
-- **OpenAI**: `gpt-4-turbo-preview` (128K context)
-- **Gemini**: `gemini-1.5-pro` (1M context)
-- **Claude**: `claude-3-5-sonnet-20241022` (200K context)
+- **Speed & Cost Efficiency**: Choose faster, more economical models for simple formatting tasks
+- **Best Quality**: Select premium models for complex text processing and nuanced formatting
+- **Long Documents**: Use models with larger context windows for processing lengthy content
 
 ### How to Select Models
 
 1. Go to **Settings → AI Text Formatter**
 2. Navigate to the **Model Selection** section
 3. Choose your preferred model for each service
-4. Each model shows context length and cost information
+4. Each model shows context length and capability information
 5. Changes take effect immediately for new requests
 
 See the [Model Selection Guide](MODEL_SELECTION_GUIDE.md) for detailed information about all available models.
 
 ### Custom Prompts
 
-Customize AI prompts for each format type in settings. Use `{text}` as a placeholder:
+The plugin allows you to fully customize the AI prompts used for each format type, giving you complete control over how your text is processed and formatted.
 
+#### How to Customize Prompts
+
+1. Go to **Settings → AI Text Formatter**
+2. Navigate to the **Custom Prompts** section
+3. Edit the prompt for any format type (Notes, Prose, To-Do List)
+4. Use `{text}` as a placeholder where your selected text will be inserted
+5. Save your changes - they take effect immediately
+
+#### Prompt Guidelines
+
+- **Use `{text}` placeholder**: This is where your selected text will be inserted
+- **Be specific**: Clear instructions produce better results
+- **Include context**: Mention the desired output format and style
+- **Set expectations**: Specify length, tone, and structure requirements
+
+#### Example Custom Prompts
+
+**Meeting Notes Format:**
 ```
-Transform the following voice transcription into professional meeting notes with clear action items: {text}
+Transform the following voice transcription into professional meeting notes with clear action items and decisions. Use headers for different topics and bullet points for details: {text}
 ```
+
+**Academic Writing:**
+```
+Rewrite the following rough notes into formal academic prose with proper transitions and scholarly tone. Maintain all key information while improving clarity and flow: {text}
+```
+
+**Project Planning:**
+```
+Convert the following brainstorming session into a structured project plan with clear phases, deliverables, and actionable tasks: {text}
+```
+
+**Email Draft:**
+```
+Transform the following rough thoughts into a professional email with proper greeting, clear paragraphs, and appropriate closing: {text}
+```
+
+**Creative Writing:**
+```
+Enhance the following rough draft into engaging narrative prose with vivid descriptions and smooth transitions while preserving the original story elements: {text}
+```
+
+#### Tips for Better Results
+
+- **Be specific about format**: "Use markdown headers" vs "organize well"
+- **Specify tone**: Professional, casual, academic, creative, etc.
+- **Include length guidance**: "Keep it concise" or "provide detailed explanations"
+- **Mention special requirements**: "Include timestamps" or "add priority levels"
+
+#### Default Prompts
+
+The plugin comes with optimized default prompts for each format:
+
+- **Notes**: Creates structured content with headers and bullet points
+- **Prose**: Generates flowing, well-formatted paragraphs
+- **To-Do List**: Produces actionable checkbox items
+
+You can always reset to defaults if needed by clearing the custom prompt field.
 
 ### Advanced Settings
 
@@ -234,8 +275,8 @@ Transform the following voice transcription into professional meeting notes with
 - ✅ **New**: Built-in rate limiting prevents most rate limit errors
 
 #### Gemini "404 Not Found"
-- ✅ Plugin now uses updated model names (`gemini-1.5-flash`)
-- ✅ Try switching to `gemini-1.5-pro` if issues persist
+- ✅ Plugin uses current model names for Gemini
+- ✅ Try switching to a different Gemini model if issues persist
 - ✅ Ensure your API key starts with `AIza`
 
 ### Debug Mode
@@ -260,22 +301,13 @@ Enable browser developer tools (F12) to see detailed error information and API c
 
 ## 💰 Cost Information
 
-### Approximate Costs (per 1,000 words):
+Usage costs vary by AI service and model selection. Each service offers different pricing tiers:
 
-#### OpenAI:
-- GPT-3.5-turbo: ~$0.002
-- GPT-4o-mini: ~$0.0002
-- GPT-4o: ~$0.01
+- **OpenAI**: Multiple models with varying costs, from economical to premium
+- **Google Gemini**: Competitive pricing with generous free tier
+- **Anthropic Claude**: Premium pricing for high-quality processing
 
-#### Google Gemini:
-- Gemini-1.5-flash: ~$0.0001
-- Gemini-1.5-pro: ~$0.001
-
-#### Anthropic Claude:
-- Claude-3.5-haiku: ~$0.0005
-- Claude-3.5-sonnet: ~$0.006
-
-*Costs are estimates and may vary. Check current pricing on each service's website.*
+*Check current pricing on each service's website for the most up-to-date information.*
 
 ## 🛠️ Development
 
@@ -352,15 +384,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🆘 Support
 
 - **🐛 Issues**: Report bugs on [GitHub Issues](https://github.com/jayarerita/obsidian-ai-text-formatter/issues)
-- **💬 Discussions**: Join conversations on [GitHub Discussions](https://github.com/jayarerita/obsidian-ai-text-formatter/discussions)
-- **📚 Documentation**: Full docs in the [Wiki](https://github.com/jayarerita/obsidian-ai-text-formatter/wiki)
-- **💖 Sponsor**: Support development via [GitHub Sponsors](https://github.com/sponsors/jayarerita)
 
 ## 📈 Changelog
 
 ### Version 1.1.0 (Latest)
 - ✨ Enhanced error handling with specific, actionable messages
-- 🔄 Updated to latest AI models (GPT-4o, Claude 3.5, Gemini 1.5)
+- 🔄 Updated to latest AI models from all providers
 - 🔧 Added model switching and management features
 - 🧪 Built-in connection testing for all services
 - 📊 Token usage tracking and cost estimation
