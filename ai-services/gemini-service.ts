@@ -5,7 +5,7 @@ import { AIResponse } from '../types';
 export class GeminiService extends BaseAIService {
     private genAI: GoogleGenerativeAI | null = null;
     private model: GenerativeModel | null = null;
-    private modelName = 'gemini-1.5-flash';
+    private modelName = 'gemini-2.0-flash-lite';
 
     constructor(apiKey: string, maxTokens: number = 1000) {
         super(apiKey, maxTokens);
@@ -138,6 +138,11 @@ export class GeminiService extends BaseAIService {
     // Method to get available models (for future extensibility)
     getAvailableModels(): string[] {
         return [
+            'gemini-2.5-pro',
+            'gemini-2.5-flash',
+            'gemini-2.5-flash-lite-preview-06-17',
+            'gemini-2.0-flash',
+            'gemini-2.0-flash-lite',
             'gemini-1.5-flash',
             'gemini-1.5-pro',
             'gemini-1.0-pro'
