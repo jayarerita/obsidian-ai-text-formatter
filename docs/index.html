@@ -24,7 +24,7 @@
     <title>AI Text Formatter for Obsidian</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
     
     <!-- Fonts -->
@@ -98,13 +98,7 @@
                         </div>
                     </div>
                     <div class="hero-visual">
-                        <div class="hero-image-placeholder">
-                            <!-- Replace with your hero image/animation -->
-                            <div class="placeholder-content">
-                                <i class="fas fa-magic fa-3x" aria-hidden="true"></i>
-                                <p>Hero Image/Animation</p>
-                            </div>
-                        </div>
+                        <img src="docs/assets/hero.png" />
                     </div>
                 </div>
             </div>
@@ -185,15 +179,8 @@
                 </div>
                 
                 <!-- Video Demo -->
-                <div class="demo-video">
-                    <div class="video-placeholder">
-                        <!-- Replace with your video embed -->
-                        <div class="placeholder-content">
-                            <i class="fas fa-video fa-3x" aria-hidden="true"></i>
-                            <p>Demo Video Placeholder</p>
-                            <small>Add your video embed here</small>
-                        </div>
-                    </div>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/HMx9GZKmepM?si=_0XV7bvV7ZZv_zSX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>
 
                 <!-- Before/After Examples -->
@@ -201,7 +188,9 @@
                     <div class="example-card">
                         <h3 class="example-title">Voice Transcription Input</h3>
                         <div class="code-block">
-                            <pre><code>So I was thinking about the project and we need to do several things first we need to set up the database then we need to create the user interface and also we should probably test everything before we deploy it to production oh and don't forget to update the documentation</code></pre>
+                            <pre><code>
+                                So I was thinking about the project and we need to do several things first we need to set up the database then we need to create the user interface and also we should probably test everything before we deploy it to production oh and don't forget to update the documentation
+                            </code></pre>
                         </div>
                     </div>
                     
@@ -224,6 +213,10 @@
                                 <button class="format-tab" role="tab" aria-selected="false" aria-controls="todo-panel" id="todo-tab">
                                     <i class="fas fa-check-square" aria-hidden="true"></i>
                                     To-Do
+                                </button>
+                                <button class="format-tab" role="tab" aria-selected="false" aria-controls="custom-panel" id="custom-tab">
+                                    <i class="fas fa-check-square" aria-hidden="true"></i>
+                                    Custom
                                 </button>
                             </div>
                             
@@ -261,7 +254,16 @@ It's crucial that we thoroughly test all functionality before deploying to the p
 - [ ] Implement responsive design
 - [ ] Test all functionality thoroughly
 - [ ] Deploy to production environment
-- [ ] Update project documentation</code></pre>
+- [ ] Update project documentation
+</code></pre>
+                                    </div>
+                                </div>
+
+                                <div class="format-panel" role="tabpanel" id="custom-panel" aria-labelledby="custom-tab">
+                                    <div class="code-block">
+                                        <pre><code>
+                                            
+                                        </code></pre>
                                     </div>
                                 </div>
                             </div>
@@ -280,34 +282,19 @@ It's crucial that we thoroughly test all functionality before deploying to the p
                 </div>
                 <div class="screenshots-grid">
                     <div class="screenshot-item">
-                        <div class="screenshot-placeholder">
-                            <div class="placeholder-content">
-                                <i class="fas fa-image fa-2x" aria-hidden="true"></i>
-                                <p>Context Menu</p>
-                            </div>
-                        </div>
+                        <img src="docs/assets/screenshot-context-menu.png" class="screenshot-img" aria-hidden="true"></i>
                         <h3 class="screenshot-title">Right-Click Context Menu</h3>
                         <p class="screenshot-description">Easy access to formatting options directly from the editor</p>
                     </div>
                     <div class="screenshot-item">
-                        <div class="screenshot-placeholder">
-                            <div class="placeholder-content">
-                                <i class="fas fa-image fa-2x" aria-hidden="true"></i>
-                                <p>Settings Panel</p>
-                            </div>
-                        </div>
+                        <img src="docs/assets/screenshot-settings.png" class="screenshot-img" aria-hidden="true"></i>
                         <h3 class="screenshot-title">Settings Configuration</h3>
                         <p class="screenshot-description">Configure AI services, API keys, and custom prompts</p>
                     </div>
                     <div class="screenshot-item">
-                        <div class="screenshot-placeholder">
-                            <div class="placeholder-content">
-                                <i class="fas fa-image fa-2x" aria-hidden="true"></i>
-                                <p>Format Selection</p>
-                            </div>
-                        </div>
-                        <h3 class="screenshot-title">Format Selection Modal</h3>
-                        <p class="screenshot-description">Choose your desired output format with preview</p>
+                        <img src="docs/assets/screenshot-command-palette.png" class="screenshot-img" aria-hidden="true"></i>
+                        <h3 class="screenshot-title">Command Palette Integration</h3>
+                        <p class="screenshot-description">Quick access to formatting commands via Obsidian's command palette</p>
                     </div>
                 </div>
             </div>

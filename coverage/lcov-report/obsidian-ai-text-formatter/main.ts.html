@@ -573,6 +573,17 @@
             }
         });
 &nbsp;
+
+        // Command for Custom format
+<span class="cstat-no" title="statement not covered" >        this.addCommand({</span>
+            id: 'reformat-to-custom',
+            name: 'Reformat selected text to Custom Format',
+            editorCallback: <span class="fstat-no" title="function not covered" >async (e</span>ditor) =&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" > {</span></span>
+<span class="cstat-no" title="statement not covered" >                await this.reformatSelectedText(editor, FormatType.CUSTOM);</span>
+            }
+        });
+&nbsp;
+
         // General reformat command that shows format selection
 <span class="cstat-no" title="statement not covered" >        this.addCommand({</span>
             id: 'reformat-text',
@@ -705,10 +716,21 @@
 <span class="cstat-no" title="statement not covered" >                                await this.reformatSelectedText(editor, FormatType.TODO);</span>
                             });
                     });
+
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                    menu.addItem(<span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >                        item</span>
+                            .setTitle('→ Custom')
+                            .setIcon('check-square')
+                            .onClick(<span class="fstat-no" title="function not covered" >async () =</span>&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" > {</span></span>
+<span class="cstat-no" title="statement not covered" >                                await this.reformatSelectedText(editor, FormatType.CUSTOM);</span>
+                            });
+                    });
                 }
             })
         );
     }
+
 &nbsp;
     private async <span class="fstat-no" title="function not covered" >showFormatSelectionModal(</span>editor: Editor): Promise&lt;void&gt; {
         const selectedText = <span class="cstat-no" title="statement not covered" >editor.getSelection();</span>

@@ -182,23 +182,39 @@ export class ErrorHandler {
         throw lastError!;
     }
 
-    static handleRateLimitError(retryAfter?: number): ErrorInfo {
-        const waitTime = retryAfter ? `Please wait ${retryAfter} seconds before trying again.` : 'Please wait a moment before trying again.';
+    static handleRateLimitError(service: string, retryAfter?: number): ErrorInfo {
+        const waitTime = retryAfter ? `Please wait ${Math.ceil(retryAfter / 1000)} seconds before trying again.` : 'Please wait a moment before trying again.';
+        const upgradeMessage = service === 'OpenAI' ? 
+            ' Consider upgrading your OpenAI plan for higher rate limits.' : 
+            ` Consider upgrading your ${service} plan for higher rate limits.`;
+            
         return {
             type: ErrorType.API,
-            message: 'Rate Limit Exceeded',
-            details: `You've exceeded the API rate limit. ${waitTime}`,
+            message: `${service} Rate Limit Exceeded`,
+            details: `You've exceeded the ${service} API rate limit. ${waitTime}${upgradeMessage}`,
             recoverable: true
         };
     }
 
     static handleQuotaExceededError(service: string): ErrorInfo {
+        const billingMessage = service === 'OpenAI' ? 
+            'Please check your OpenAI billing and usage limits at https://platform.openai.com/usage' :
+            `Please check your ${service} billing and usage limits.`;
+            
         return {
             type: ErrorType.API,
-            message: 'API Quota Exceeded',
-            details: `Your ${service} API quota has been exceeded. Please check your billing and usage limits.`,
+            message: `${service} API Quota Exceeded`,
+            details: `Your ${service} API quota has been exceeded. ${billingMessage}`,
             recoverable: false
         };
+    }
+
+    static showRateLimitNotification(service: string, waitTime?: number): void {
+        const message = waitTime ? 
+            `⏱️ ${service} rate limit reached. Retrying in ${Math.ceil(waitTime / 1000)} seconds...` :
+            `⏱️ ${service} rate limit reached. Please wait before making more requests.`;
+            
+        this.showSimpleNotification(message, 'warning');
     }
 
     static handleInvalidResponseError(service: string): ErrorInfo {

@@ -34,6 +34,8 @@ An Obsidian plugin that uses AI services (OpenAI GPT, Google Gemini, Anthropic C
 - **Debug Logging**: Comprehensive logging for troubleshooting
 - **Cost Optimization**: Model information with pricing details and recommendations
 - **Improved Reliability**: Better error recovery and retry logic
+- **Rate Limiting Protection**: Automatic retry with exponential backoff for rate limits
+- **Smart Request Throttling**: Built-in delays to prevent API rate limiting
 
 ## 📦 Installation
 
@@ -88,7 +90,10 @@ Use the "Test Connection" button in settings to verify everything works correctl
 ### Quick Start
 
 1. **Select text** in any note (voice transcription, rough notes, etc.)
-2. **Right-click** and choose "Reformat with AI" → Select format
+2. **Right-click** and choose one of the AI formatting options:
+   - **AI Format → Notes**: Convert to structured notes
+   - **AI Format → Prose**: Convert to flowing prose
+   - **AI Format → To-Do List**: Convert to actionable tasks
 3. **Wait** for processing to complete (usually 2-5 seconds)
 4. **Review** your beautifully formatted text!
 
@@ -96,7 +101,6 @@ Use the "Test Connection" button in settings to verify everything works correctl
 
 Access these commands via the Command Palette (Ctrl/Cmd + P):
 
-- **Reformat selected text with AI**: Shows format selection modal
 - **Reformat selected text to Notes**: Direct formatting to structured notes
 - **Reformat selected text to Prose**: Direct formatting to flowing prose
 - **Reformat selected text to To-Do List**: Direct formatting to actionable tasks
@@ -104,10 +108,9 @@ Access these commands via the Command Palette (Ctrl/Cmd + P):
 ### Context Menu Options
 
 Right-click on selected text to access:
-- **Reformat with AI**: Main option with format selection
-- **→ Notes Format**: Direct notes formatting
-- **→ Prose Format**: Direct prose formatting  
-- **→ To-Do List**: Direct to-do formatting
+- **AI Format → Notes**: Direct notes formatting
+- **AI Format → Prose**: Direct prose formatting  
+- **AI Format → To-Do List**: Direct to-do formatting
 
 ## 📋 Format Examples
 
@@ -223,10 +226,12 @@ Transform the following voice transcription into professional meeting notes with
 - ✅ Add billing information if using free tier
 - ✅ Consider upgrading your plan
 
-#### "Rate limit exceeded"
+#### "Rate limit exceeded" (HTTP 429)
+- ✅ **Plugin automatically retries** with exponential backoff
 - ✅ Wait a few minutes before making more requests
 - ✅ Consider upgrading to a higher tier plan
 - ✅ Switch to a different AI service temporarily
+- ✅ **New**: Built-in rate limiting prevents most rate limit errors
 
 #### Gemini "404 Not Found"
 - ✅ Plugin now uses updated model names (`gemini-1.5-flash`)

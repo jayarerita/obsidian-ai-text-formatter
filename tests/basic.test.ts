@@ -7,6 +7,7 @@ describe('Basic Plugin Tests', () => {
       expect(FormatType.NOTES).toBe('notes');
       expect(FormatType.PROSE).toBe('prose');
       expect(FormatType.TODO).toBe('todo');
+      expect(FormatType.CUSTOM).toBe('custom');
     });
 
     test('should have correct AI service types', () => {
@@ -43,6 +44,11 @@ describe('Basic Plugin Tests', () => {
       expect(todoPrompt).toContain(testText);
       expect(typeof todoPrompt).toBe('string');
       expect(todoPrompt.length).toBeGreaterThan(0);
+
+      const customPrompt = PromptBuilder.buildPrompt(testText, FormatType.CUSTOM);
+      expect(customPrompt).toContain(testText);
+      expect(typeof customPrompt).toBe('string');
+      expect(customPrompt.length).toBeGreaterThan(0);
     });
 
     test('should validate prompts', () => {
@@ -57,6 +63,7 @@ describe('Basic Plugin Tests', () => {
       expect(defaultPrompts[FormatType.NOTES]).toBeDefined();
       expect(defaultPrompts[FormatType.PROSE]).toBeDefined();
       expect(defaultPrompts[FormatType.TODO]).toBeDefined();
+      expect(defaultPrompts[FormatType.CUSTOM]).toBeDefined();
     });
   });
 });
