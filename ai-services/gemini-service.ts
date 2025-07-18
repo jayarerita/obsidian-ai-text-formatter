@@ -7,7 +7,7 @@ export class GeminiService extends BaseAIService {
     private model: GenerativeModel | null = null;
     private modelName = 'gemini-2.0-flash-lite';
 
-    constructor(apiKey: string, maxTokens: number = 1000) {
+    constructor(apiKey: string, maxTokens = 1000) {
         super(apiKey, maxTokens);
         this.initializeService();
     }
@@ -52,7 +52,7 @@ export class GeminiService extends BaseAIService {
             console.log(`Gemini: Using model ${this.modelName} with prompt length: ${prompt.length}`);
             
             const result = await this.model.generateContent(prompt);
-            const response = await result.response;
+            const response = result.response;
             
             if (!response) {
                 return this.createErrorResponse('No response received from Gemini');
