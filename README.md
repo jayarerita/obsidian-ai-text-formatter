@@ -58,14 +58,17 @@ The plugin will be available in Obsidian's Community Plugins directory once appr
 You'll need an API key from at least one of these services:
 
 #### OpenAI (Recommended for beginners)
+
 - Get your API key from [OpenAI Platform](https://platform.openai.com/api-keys)
 - Multiple models available with different capabilities and costs
 
 #### Google Gemini (Best value)
+
 - Get your API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
 - Competitive pricing with generous free tier
 
 #### Anthropic Claude (Best for complex tasks)
+
 - Get your API key from [Anthropic Console](https://console.anthropic.com/)
 - Premium quality models for complex text processing
 
@@ -105,6 +108,7 @@ Access these commands via the Command Palette (Ctrl/Cmd + P):
 ### Context Menu Options
 
 Right-click on selected text to access:
+
 - **AI Format → Notes**: Direct notes formatting
 - **AI Format → Prose**: Direct prose formatting  
 - **AI Format → To-Do List**: Direct to-do formatting
@@ -112,7 +116,8 @@ Right-click on selected text to access:
 ## 📋 Format Examples
 
 ### Voice Transcription Input
-```
+
+```text
 So I was thinking about the project and we need to do several things first we need to 
 set up the database then we need to create the user interface and also we should 
 probably test everything before we deploy it to production oh and don't forget to 
@@ -120,6 +125,7 @@ update the documentation
 ```
 
 ### Notes Format Output
+
 ```markdown
 # Project Tasks
 
@@ -137,7 +143,8 @@ update the documentation
 ```
 
 ### Prose Format Output
-```
+
+```text
 I was considering the project requirements and identified several key tasks that need 
 to be completed. First, we need to establish the database infrastructure to support 
 our application. Following that, we should focus on creating an intuitive user 
@@ -149,6 +156,7 @@ is updated to reflect any changes made during the development process.
 ```
 
 ### To-Do List Format Output
+
 ```markdown
 - [ ] Set up database infrastructure
 - [ ] Create user interface components

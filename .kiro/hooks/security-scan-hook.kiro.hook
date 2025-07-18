@@ -4,7 +4,7 @@
   "description": "Automatically reviews changed files for potential security issues including API keys, tokens, credentials, private keys, encryption keys, certificates, authentication tokens, session IDs, passwords, secrets in configuration files, IP addresses with sensitive data, hardcoded internal URLs, and database connection credentials",
   "version": "1",
   "when": {
-    "type": "fileEdited",
+    "type": "userTriggered",
     "patterns": [
       "*.ts",
       "*.js",

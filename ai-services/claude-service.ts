@@ -41,7 +41,7 @@ export class ClaudeService extends BaseAIService {
     private modelName = 'claude-3-5-sonnet-20241022';
     private readonly anthropicVersion = '2023-06-01';
 
-    constructor(apiKey: string, maxTokens: number = 1000) {
+    constructor(apiKey: string, maxTokens = 1000) {
         super(apiKey, maxTokens);
     }
 
