@@ -5,7 +5,6 @@ import { AIResponse } from '../types';
 
 
 export class OpenAIService extends BaseAIService {
-    private readonly baseUrl = 'https://api.openai.com/v1';
     private modelName = 'gpt-3.5-turbo';
 
     constructor(apiKey: string, maxTokens = 1000) {
@@ -60,8 +59,8 @@ export class OpenAIService extends BaseAIService {
         }
     }
 
-    private handleOpenAIError(error: any): AIResponse {
-        const errorMessage = error.message || error.toString();
+    private handleOpenAIError(error: unknown): AIResponse {
+        const errorMessage = error instanceof Error ? error.message : String(error);
         
         // Handle specific OpenAI API errors with user-friendly messages
         if (errorMessage.includes('invalid_api_key') || errorMessage.includes('Incorrect API key')) {

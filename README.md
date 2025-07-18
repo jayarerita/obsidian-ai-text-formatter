@@ -261,21 +261,25 @@ You can always reset to defaults if needed by clearing the custom prompt field.
 ### Common Issues & Solutions
 
 #### "AI service not configured"
+
 - ✅ Enter a valid API key in settings
 - ✅ Test your connection using the "Test" button
 - ✅ Ensure billing is enabled for your chosen service
 
 #### "Selected text is too long"
+
 - ✅ Select a smaller portion of text
 - ✅ Increase max tokens setting
 - ✅ Switch to a model with larger context window
 
 #### "API quota exceeded"
+
 - ✅ Check your usage limits in the service dashboard
 - ✅ Add billing information if using free tier
 - ✅ Consider upgrading your plan
 
 #### "Rate limit exceeded" (HTTP 429)
+
 - ✅ **Plugin automatically retries** with exponential backoff
 - ✅ Wait a few minutes before making more requests
 - ✅ Consider upgrading to a higher tier plan
@@ -283,6 +287,7 @@ You can always reset to defaults if needed by clearing the custom prompt field.
 - ✅ **New**: Built-in rate limiting prevents most rate limit errors
 
 #### Gemini "404 Not Found"
+
 - ✅ Plugin uses current model names for Gemini
 - ✅ Try switching to a different Gemini model if issues persist
 - ✅ Ensure your API key starts with `AIza`
@@ -354,6 +359,7 @@ npx jest tests/basic.test.ts
 ### Test Coverage
 
 Current test coverage includes:
+
 - **Core Types**: Validation of enums and default settings
 - **Prompt Builder**: Testing prompt generation and validation
 - **Basic Functionality**: Core plugin functionality tests
