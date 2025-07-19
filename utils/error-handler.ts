@@ -127,7 +127,7 @@ export class ErrorHandler {
         return { valid: true };
     }
 
-    static validateTextInput(text: string, maxLength: number = 10000): { valid: boolean; message?: string } {
+    static validateTextInput(text: string, maxLength = 10000): { valid: boolean; message?: string } {
         if (!text || text.trim().length === 0) {
             return {
                 valid: false,
@@ -147,8 +147,8 @@ export class ErrorHandler {
 
     static async withRetry<T>(
         operation: () => Promise<T>,
-        maxRetries: number = 3,
-        delay: number = 1000
+        maxRetries = 3,
+        delay = 1000
     ): Promise<T> {
         let lastError: Error;
 

@@ -3,10 +3,10 @@ import { AIResponse } from '../types';
 export abstract class BaseAIService {
     protected apiKey: string;
     protected maxTokens: number;
-    private lastRequestTime: number = 0;
-    private minRequestInterval: number = 1000; // Minimum 1 second between requests
+    private lastRequestTime = 0;
+    private minRequestInterval = 1000; // Minimum 1 second between requests
 
-    constructor(apiKey: string, maxTokens: number = 4000) {
+    constructor(apiKey: string, maxTokens = 4000) {
         this.apiKey = apiKey;
         this.maxTokens = maxTokens;
     }

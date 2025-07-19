@@ -113,12 +113,12 @@ export const RateLimiters = {
  * Exponential backoff utility for retry logic
  */
 export class ExponentialBackoff {
-    private attempt: number = 0;
+    private attempt = 0;
     private maxAttempts: number;
     private baseDelay: number;
     private maxDelay: number;
 
-    constructor(maxAttempts: number = 3, baseDelay: number = 1000, maxDelay: number = 30000) {
+    constructor(maxAttempts = 3, baseDelay = 1000, maxDelay = 30000) {
         this.maxAttempts = maxAttempts;
         this.baseDelay = baseDelay;
         this.maxDelay = maxDelay;

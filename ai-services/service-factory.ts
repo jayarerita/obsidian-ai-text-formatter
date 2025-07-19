@@ -8,7 +8,7 @@ export class AIServiceFactory {
     static createService(
         serviceType: AIService, 
         apiKey: string, 
-        maxTokens: number = 4000,
+        maxTokens = 4000,
         model?: string
     ): BaseAIService {
         switch (serviceType) {
