@@ -83,7 +83,7 @@ export default class AITextFormatterPlugin extends Plugin {
             // Validate selection
             const validation = ErrorHandler.validateTextInput(selectedText);
             if (!validation.valid) {
-                ErrorHandler.showSimpleNotification(validation.message!, 'warning');
+                ErrorHandler.showSimpleNotification(validation.message || "", 'warning');
                 return;
             }
 

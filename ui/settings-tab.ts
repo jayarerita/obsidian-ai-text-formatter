@@ -56,7 +56,7 @@ export class AITextFormatterSettingTab extends PluginSettingTab {
 
     private addApiKeysSection(): void {
         const { containerEl } = this;
-        const settings = this.plugin.settingsManager.getSettings();
+        // const settings = this.plugin.settingsManager.getSettings();
 
         containerEl.createEl('h3', { text: 'API Keys' });
         containerEl.createEl('p', { 
