@@ -1,5 +1,6 @@
 # AI Text Formatter for Obsidian
 
+[![Latest Release](https://img.shields.io/github/v/release/jayarerita/obsidian-ai-text-formatter?style=flat-square&color=blue)](https://github.com/jayarerita/obsidian-ai-text-formatter/releases/latest)
 [![Tests](https://github.com/jayarerita/obsidian-ai-text-formatter/actions/workflows/test.yml/badge.svg)](https://github.com/jayarerita/obsidian-ai-text-formatter/actions/workflows/test.yml)
 [![Test Coverage](https://codecov.io/gh/jayarerita/obsidian-ai-text-formatter/branch/main/graph/badge.svg)](https://codecov.io/gh/jayarerita/obsidian-ai-text-formatter)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -12,9 +13,9 @@ An Obsidian plugin that uses AI services (OpenAI GPT, Google Gemini, Anthropic C
 - **🤖 Multiple AI Services**: Support for OpenAI GPT (3.5/4/4o), Google Gemini (1.5), and Anthropic Claude (3/3.5)
 - **🎯 Model Selection**: Choose specific models for each service to optimize for speed, quality, or cost
 - **📝 Three Format Types**:
-  - **Notes**: Structured notes with headers and bullet points
-  - **Prose**: Well-formatted paragraphs with proper grammar
-  - **To-Do Lists**: Actionable checkbox items
+    - **Notes**: Structured notes with headers and bullet points
+    - **Prose**: Well-formatted paragraphs with proper grammar
+    - **To-Do Lists**: Actionable checkbox items
 - **🖱️ Context Menu Integration**: Right-click selected text for quick formatting
 - **⌨️ Command Palette**: Access formatting commands via Obsidian's command palette
 - **🎨 Custom Prompts**: Customize AI prompts for each format type
@@ -91,9 +92,9 @@ Use the "Test Connection" button in settings to verify everything works correctl
 
 1. **Select text** in any note (voice transcription, rough notes, etc.)
 2. **Right-click** and choose one of the AI formatting options:
-   - **AI Format → Notes**: Convert to structured notes
-   - **AI Format → Prose**: Convert to flowing prose
-   - **AI Format → To-Do List**: Convert to actionable tasks
+    - **AI Format → Notes**: Convert to structured notes
+    - **AI Format → Prose**: Convert to flowing prose
+    - **AI Format → To-Do List**: Convert to actionable tasks
 3. **Wait** for processing to complete (usually 2-5 seconds)
 4. **Review** your beautifully formatted text!
 
@@ -110,7 +111,7 @@ Access these commands via the Command Palette (Ctrl/Cmd + P):
 Right-click on selected text to access:
 
 - **AI Format → Notes**: Direct notes formatting
-- **AI Format → Prose**: Direct prose formatting  
+- **AI Format → Prose**: Direct prose formatting
 - **AI Format → To-Do List**: Direct to-do formatting
 
 ## 📋 Format Examples
@@ -118,9 +119,9 @@ Right-click on selected text to access:
 ### Voice Transcription Input
 
 ```text
-So I was thinking about the project and we need to do several things first we need to 
-set up the database then we need to create the user interface and also we should 
-probably test everything before we deploy it to production oh and don't forget to 
+So I was thinking about the project and we need to do several things first we need to
+set up the database then we need to create the user interface and also we should
+probably test everything before we deploy it to production oh and don't forget to
 update the documentation
 ```
 
@@ -130,13 +131,16 @@ update the documentation
 # Project Tasks
 
 ## Database Setup
+
 - Set up the database infrastructure
 
 ## User Interface Development
+
 - Create the user interface components
 - Ensure responsive design
 
 ## Testing & Deployment
+
 - Test all functionality thoroughly
 - Deploy to production environment
 - Update project documentation
@@ -145,13 +149,13 @@ update the documentation
 ### Prose Format Output
 
 ```text
-I was considering the project requirements and identified several key tasks that need 
-to be completed. First, we need to establish the database infrastructure to support 
-our application. Following that, we should focus on creating an intuitive user 
-interface that meets our users' needs. 
+I was considering the project requirements and identified several key tasks that need
+to be completed. First, we need to establish the database infrastructure to support
+our application. Following that, we should focus on creating an intuitive user
+interface that meets our users' needs.
 
-It's crucial that we thoroughly test all functionality before deploying to the 
-production environment. Additionally, we must ensure that our project documentation 
+It's crucial that we thoroughly test all functionality before deploying to the
+production environment. Additionally, we must ensure that our project documentation
 is updated to reflect any changes made during the development process.
 ```
 
@@ -208,27 +212,32 @@ The plugin allows you to fully customize the AI prompts used for each format typ
 #### Example Custom Prompts
 
 **Meeting Notes Format:**
-```
+
+```text
 Transform the following voice transcription into professional meeting notes with clear action items and decisions. Use headers for different topics and bullet points for details: {text}
 ```
 
 **Academic Writing:**
-```
+
+```text
 Rewrite the following rough notes into formal academic prose with proper transitions and scholarly tone. Maintain all key information while improving clarity and flow: {text}
 ```
 
 **Project Planning:**
-```
+
+```text
 Convert the following brainstorming session into a structured project plan with clear phases, deliverables, and actionable tasks: {text}
 ```
 
 **Email Draft:**
-```
+
+```text
 Transform the following rough thoughts into a professional email with proper greeting, clear paragraphs, and appropriate closing: {text}
 ```
 
 **Creative Writing:**
-```
+
+```text
 Enhance the following rough draft into engaging narrative prose with vivid descriptions and smooth transitions while preserving the original story elements: {text}
 ```
 
@@ -284,13 +293,8 @@ You can always reset to defaults if needed by clearing the custom prompt field.
 - ✅ Wait a few minutes before making more requests
 - ✅ Consider upgrading to a higher tier plan
 - ✅ Switch to a different AI service temporarily
+- ✅ Make sure you api key is valid
 - ✅ **New**: Built-in rate limiting prevents most rate limit errors
-
-#### Gemini "404 Not Found"
-
-- ✅ Plugin uses current model names for Gemini
-- ✅ Try switching to a different Gemini model if issues persist
-- ✅ Ensure your API key starts with `AIza`
 
 ### Debug Mode
 
@@ -314,13 +318,9 @@ Enable browser developer tools (F12) to see detailed error information and API c
 
 ## 💰 Cost Information
 
-Usage costs vary by AI service and model selection. Each service offers different pricing tiers:
+Usage costs vary by AI service and model selection. Each service offers different pricing tiers.
 
-- **OpenAI**: Multiple models with varying costs, from economical to premium
-- **Google Gemini**: Competitive pricing with generous free tier
-- **Anthropic Claude**: Premium pricing for high-quality processing
-
-*Check current pricing on each service's website for the most up-to-date information.*
+_Check current pricing on each service's website for the most up-to-date information._
 
 ## 🛠️ Development
 
@@ -401,23 +401,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📈 Changelog
 
-### Version 1.1.0 (Latest)
-- ✨ Enhanced error handling with specific, actionable messages
-- 🔄 Updated to latest AI models from all providers
-- 🔧 Added model switching and management features
-- 🧪 Built-in connection testing for all services
-- 📊 Token usage tracking and cost estimation
-- 🐛 Fixed editor operation errors
-- 📝 Comprehensive logging and debugging
-- 🚀 Improved reliability and performance
-
-### Version 1.0.0
-- 🎉 Initial release
-- 🤖 Support for OpenAI, Gemini, and Claude
-- 📝 Three format types: Notes, Prose, To-Do Lists
-- 🖱️ Context menu and command palette integration
-- 🎨 Custom prompt support
-- 🛡️ Comprehensive error handling
+See [RELEASE_NOTES.md](RELEASE_NOTES.md) for detailed version history and changes.
 
 ## 🙏 Acknowledgments
 
