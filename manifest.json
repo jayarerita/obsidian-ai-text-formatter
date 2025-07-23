@@ -1,9 +1,9 @@
 {
 	"id": "obsidian-ai-text-formatter",
 	"name": "AI Text Formatter",
-	"version": "1.1.0",
+	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Transform selected text using AI services (OpenAI GPT, Google Gemini, Anthropic Claude) into structured notes, flowing prose, or actionable to-do lists. Perfect for cleaning up voice-to-text transcriptions.",
+	"description": "Transform selected text using AI services into structured notes, flowing prose, or actionable to-do lists. Perfect for cleaning up voice-to-text transcriptions.",
 	"author": "Jake Rita",
 	"authorUrl": "https://github.com/jayarerita/obsidian-ai-text-formatter",
 	"fundingUrl": "https://github.com/sponsors/jayarerita",
