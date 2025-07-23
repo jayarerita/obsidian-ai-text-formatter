@@ -233,6 +233,28 @@ describe('Component Name', () => {
 4. **Build**: Create production build
 5. **Tag**: Create git tag for release
 
+### Automated Github Release Creation
+
+1. Update version in manifest.json and package.json
+2. Update RELEASE_NOTES.md with changes
+3. Commit changes
+
+```bash
+git add .
+git commit -m "Prepare release v1.2.0"
+```
+
+4. Create and push tag
+
+```bash
+git tag v1.2.0
+git push origin v1.2.0
+```
+
+5. Action runs automatically to create a release draft
+6. Go to GitHub releases and publish the draft
+
+
 ## 💬 Community
 
 - **Issues**: Use GitHub Issues for bugs and features

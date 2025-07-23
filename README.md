@@ -105,6 +105,7 @@ Access these commands via the Command Palette (Ctrl/Cmd + P):
 - **Reformat selected text to Notes**: Direct formatting to structured notes
 - **Reformat selected text to Prose**: Direct formatting to flowing prose
 - **Reformat selected text to To-Do List**: Direct formatting to actionable tasks
+- **Reformat selected text to custom format**: Format with your custom prompt
 
 ### Context Menu Options
 
@@ -113,6 +114,7 @@ Right-click on selected text to access:
 - **AI Format → Notes**: Direct notes formatting
 - **AI Format → Prose**: Direct prose formatting
 - **AI Format → To-Do List**: Direct to-do formatting
+= **AI Format → Custom**: Custom formatting
 
 ## 📋 Format Examples
 

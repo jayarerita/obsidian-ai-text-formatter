@@ -1,35 +1,55 @@
 name: Release Obsidian plugin
 
 on:
-  push:
-    tags:
-      - "*"
+    push:
+        tags:
+            - "v*"
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v3
+    build:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+        steps:
+            - uses: actions/checkout@v3
 
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18.x"
+            - name: Use Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: "18.x"
+                  cache: "npm"
 
-      - name: Build plugin
-        run: |
-          npm install
-          npm run build
+            - name: Install dependencies
+              run: npm ci
 
-      - name: Create release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          tag="${GITHUB_REF#refs/tags/}"
+            - name: Run tests
+              run: npm test
 
-          gh release create "$tag" \
-            --title="$tag" \
-            --draft \
-            main.js manifest.json styles.css
+            - name: Build plugin
+              run: npm run build
+
+            - name: Check required files exist
+              run: |
+                  if [ ! -f main.js ]; then echo "main.js not found!"; exit 1; fi
+                  if [ ! -f manifest.json ]; then echo "manifest.json not found!"; exit 1; fi
+
+            - name: Create release
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                  tag="${GITHUB_REF#refs/tags/}"
+
+                  # Create release with notes from RELEASE_NOTES.md if it exists
+                  if [ -f RELEASE_NOTES.md ]; then
+                    gh release create "$tag" \
+                      --title="$tag" \
+                      --notes-file RELEASE_NOTES.md \
+                      --draft \
+                      main.js manifest.json
+                  else
+                    gh release create "$tag" \
+                      --title="$tag" \
+                      --generate-notes \
+                      --draft \
+                      main.js manifest.json
+                  fi
