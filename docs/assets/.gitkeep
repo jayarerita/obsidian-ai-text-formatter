@@ -1,0 +1,13 @@
+# Assets Directory
+
+This directory should contain:
+- favicon.ico - Website favicon (16x16, 32x32 px)
+- apple-touch-icon.png - iOS icon (180x180 px)
+- og-image.png - Social sharing image (1200x630 px)
+- logo.svg - Plugin logo
+- hero.png - Hero section image
+- screenshot-context-menu.png - Context menu screenshot
+- screenshot-settings.png - Settings panel screenshot
+- screenshot-command-palette.png - Command palette screenshot
+
+Please add these assets to complete the documentation site.

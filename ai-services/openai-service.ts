@@ -3,48 +3,11 @@ import OpenAI from 'openai';
 import { BaseAIService } from './base-service';
 import { AIResponse } from '../types';
 
-interface OpenAIMessage {
-    role: 'system' | 'user' | 'assistant';
-    content: string;
-}
-
-interface OpenAIRequest {
-    model: string;
-    messages: OpenAIMessage[];
-    max_tokens: number;
-    temperature: number;
-    top_p?: number;
-    frequency_penalty?: number;
-    presence_penalty?: number;
-}
-
-interface OpenAIResponse {
-    choices: Array<{
-        message: {
-            content: string;
-        };
-        finish_reason: string;
-    }>;
-    usage: {
-        total_tokens: number;
-        prompt_tokens: number;
-        completion_tokens: number;
-    };
-}
-
-interface OpenAIError {
-    error: {
-        message: string;
-        type: string;
-        code?: string;
-    };
-}
 
 export class OpenAIService extends BaseAIService {
-    private readonly baseUrl = 'https://api.openai.com/v1';
     private modelName = 'gpt-3.5-turbo';
 
-    constructor(apiKey: string, maxTokens: number = 1000) {
+    constructor(apiKey: string, maxTokens = 1000) {
         super(apiKey, maxTokens);
         
         // Set conservative rate limiting for OpenAI
@@ -66,37 +29,24 @@ export class OpenAIService extends BaseAIService {
         try {
             console.log(`OpenAI: Using model ${this.modelName} with prompt length: ${prompt.length}`);
 
-            // const requestBody: OpenAIRequest = {
-            //     model: this.modelName,
-            //     messages: [
-            //         {
-            //             role: 'user',
-            //             content: prompt
-            //         }
-            //     ],
-            //     max_tokens: this.maxTokens,
-            //     temperature: 0.7,
-            //     top_p: 0.9,
-            //     frequency_penalty: 0.0,
-            //     presence_penalty: 0.0
-            // };
-
-            const response = await client.responses.create({
+            const response = await client.chat.completions.create({
                 model: this.modelName,
-                instructions: 'You are a formatting assistant for helping with managing my notes.',
-                input: prompt,
-                max_output_tokens: this.maxTokens
-   
-              });
+                messages: [
+                    {
+                        role: 'user',
+                        content: prompt
+                    }
+                ],
+                max_tokens: this.maxTokens,
+                temperature: 0.7,
+                top_p: 0.9,
+                frequency_penalty: 0.0,
+                presence_penalty: 0.0
+            });
 
-            if (response.error){
-                console.log(response.error.message)
-                this.createErrorResponse(response.error.message);
-            }
-
-            if (response.status === "completed") {
-                const content = response.output_text
-                const tokensUsed = response.usage?.output_tokens
+            if (response.choices && response.choices.length > 0) {
+                const content = response.choices[0].message.content?.trim() || '';
+                const tokensUsed = response.usage?.total_tokens;
                 
                 console.log(`OpenAI: Successfully generated ${content.length} characters, used ${tokensUsed || 'unknown'} tokens`);
                 return this.createSuccessResponse(content, tokensUsed);
@@ -109,8 +59,8 @@ export class OpenAIService extends BaseAIService {
         }
     }
 
-    private handleOpenAIError(error: any): AIResponse {
-        const errorMessage = error.message || error.toString();
+    private handleOpenAIError(error: unknown): AIResponse {
+        const errorMessage = error instanceof Error ? error.message : String(error);
         
         // Handle specific OpenAI API errors with user-friendly messages
         if (errorMessage.includes('invalid_api_key') || errorMessage.includes('Incorrect API key')) {

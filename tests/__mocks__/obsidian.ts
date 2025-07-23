@@ -40,7 +40,7 @@ export class Plugin {
 }
 
 export class Editor {
-  private selection: string = '';
+  private selection = '';
   private cursor = { line: 0, ch: 0 };
 
   getSelection(): string {

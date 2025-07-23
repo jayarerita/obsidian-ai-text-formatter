@@ -1,7 +1,7 @@
 import { BaseAIService } from './ai-services/base-service';
 import { AIServiceFactory } from './ai-services/service-factory';
 import { PromptBuilder } from './utils/prompts';
-import { FormatType, AIService, AIResponse, ProcessingResult } from './types';
+import { FormatType, ProcessingResult } from './types';
 import { SettingsManager } from './settings';
 
 export class TextProcessor {

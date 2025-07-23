@@ -8,22 +8,25 @@ export class AIServiceFactory {
     static createService(
         serviceType: AIService, 
         apiKey: string, 
-        maxTokens: number = 4000,
+        maxTokens = 4000,
         model?: string
     ): BaseAIService {
         switch (serviceType) {
-            case AIService.OPENAI:
+            case AIService.OPENAI: {
                 const openaiService = new OpenAIService(apiKey, maxTokens);
                 if (model) openaiService.switchModel(model);
                 return openaiService;
-            case AIService.GEMINI:
+            }
+            case AIService.GEMINI: {
                 const geminiService = new GeminiService(apiKey, maxTokens);
                 if (model) geminiService.switchModel(model);
                 return geminiService;
-            case AIService.CLAUDE:
+            }
+            case AIService.CLAUDE: {
                 const claudeService = new ClaudeService(apiKey, maxTokens);
                 if (model) claudeService.switchModel(model);
                 return claudeService;
+            }
             default:
                 throw new Error(`Unsupported AI service: ${serviceType}`);
         }
