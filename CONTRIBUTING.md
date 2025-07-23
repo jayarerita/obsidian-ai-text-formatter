@@ -241,13 +241,13 @@ describe('Component Name', () => {
 
 ```bash
 git add .
-git commit -m "Prepare release v1.2.0"
+git commit -m "Prepare release 1.2.0"
 ```
 
 4. Create and push tag
 
 ```bash
-git tag v1.2.0
+git tag 1.2.0
 git push origin v1.2.0
 ```
 
