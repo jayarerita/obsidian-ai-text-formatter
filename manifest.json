@@ -5,7 +5,7 @@
 	"minAppVersion": "0.15.0",
 	"description": "Transform selected text using AI services into structured notes, flowing prose, or actionable to-do lists. Perfect for cleaning up voice-to-text transcriptions.",
 	"author": "Jake Rita",
-	"authorUrl": "https://github.com/jayarerita/obsidian-ai-text-formatter",
+	"authorUrl": "https://github.com/jayarerita",
 	"fundingUrl": "https://github.com/sponsors/jayarerita",
 	"isDesktopOnly": false
 }
