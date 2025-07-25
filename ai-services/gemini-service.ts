@@ -49,7 +49,7 @@ export class GeminiService extends BaseAIService {
         }
 
         try {
-            console.log(`Gemini: Using model ${this.modelName} with prompt length: ${prompt.length}`);
+            //console.log(`Gemini: Using model ${this.modelName} with prompt length: ${prompt.length}`);
             
             const result = await this.model.generateContent(prompt);
             const response = result.response;
@@ -68,8 +68,8 @@ export class GeminiService extends BaseAIService {
             const usageMetadata = response.usageMetadata;
             const tokensUsed = usageMetadata?.totalTokenCount;
 
-            console.log(`Gemini: Successfully generated ${text.length} characters, used ${tokensUsed || 'unknown'} tokens`);
-            console.log(`Gemini: Response: ${text.trim()}`);
+            //console.log(`Gemini: Successfully generated ${text.length} characters, used ${tokensUsed || 'unknown'} tokens`);
+            //console.log(`Gemini: Response: ${text.trim()}`);
             return this.createSuccessResponse(text.trim(), tokensUsed);
 
         } catch (error) {

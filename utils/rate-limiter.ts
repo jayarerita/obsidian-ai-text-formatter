@@ -55,9 +55,9 @@ export class RateLimiter {
 		const { canProceed, waitTime } = await this.checkRateLimit();
 
 		if (!canProceed && waitTime > 0) {
-			console.log(
-				`${this.serviceName}: Rate limiting - waiting ${waitTime}ms`
-			);
+			// console.log(
+			// 	`${this.serviceName}: Rate limiting - waiting ${waitTime}ms`
+			// );
 			await this.sleep(waitTime);
 		}
 

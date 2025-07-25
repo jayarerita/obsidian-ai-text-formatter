@@ -51,9 +51,7 @@ export class ClaudeService extends BaseAIService {
 		}
 
 		try {
-			console.log(
-				`Claude: Using model ${this.modelName} with prompt length: ${prompt.length}`
-			);
+			//console.log(`Claude: Using model ${this.modelName} with prompt length: ${prompt.length}`);
 
 			const requestBody: ClaudeRequest = {
 				model: this.modelName,
@@ -99,11 +97,11 @@ export class ClaudeService extends BaseAIService {
 					? data.usage.input_tokens + data.usage.output_tokens
 					: undefined;
 
-				console.log(
-					`Claude: Successfully generated ${
-						content.length
-					} characters, used ${tokensUsed || "unknown"} tokens`
-				);
+				// console.log(
+				// 	`Claude: Successfully generated ${
+				// 		content.length
+				// 	} characters, used ${tokensUsed || "unknown"} tokens`
+				// );
 				return this.createSuccessResponse(content, tokensUsed);
 			} else {
 				return this.createErrorResponse(

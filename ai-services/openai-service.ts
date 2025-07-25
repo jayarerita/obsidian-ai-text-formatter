@@ -27,7 +27,7 @@ export class OpenAIService extends BaseAIService {
           });
 
         try {
-            console.log(`OpenAI: Using model ${this.modelName} with prompt length: ${prompt.length}`);
+            //console.log(`OpenAI: Using model ${this.modelName} with prompt length: ${prompt.length}`);
 
             const response = await client.chat.completions.create({
                 model: this.modelName,
@@ -48,7 +48,7 @@ export class OpenAIService extends BaseAIService {
                 const content = response.choices[0].message.content?.trim() || '';
                 const tokensUsed = response.usage?.total_tokens;
                 
-                console.log(`OpenAI: Successfully generated ${content.length} characters, used ${tokensUsed || 'unknown'} tokens`);
+                //console.log(`OpenAI: Successfully generated ${content.length} characters, used ${tokensUsed || 'unknown'} tokens`);
                 return this.createSuccessResponse(content, tokensUsed);
             } else {
                 return this.createErrorResponse('No response generated from OpenAI. Please try again.');

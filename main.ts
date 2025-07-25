@@ -10,7 +10,7 @@ export default class AITextFormatterPlugin extends Plugin {
     textProcessor: TextProcessor;
 
     async onload() {
-        console.log('Loading AI Text Formatter plugin');
+        //console.log('Loading AI Text Formatter plugin');
 
         // Initialize settings manager
         this.settingsManager = new SettingsManager(this);
@@ -28,11 +28,11 @@ export default class AITextFormatterPlugin extends Plugin {
         // Register context menu
         this.registerContextMenu();
 
-        console.log('AI Text Formatter plugin loaded successfully');
+        //console.log('AI Text Formatter plugin loaded successfully');
     }
 
     onunload() {
-        console.log('Unloading AI Text Formatter plugin');
+        //console.log('Unloading AI Text Formatter plugin');
     }
 
     private registerCommands(): void {

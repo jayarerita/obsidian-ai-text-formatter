@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-ai-text-formatter",
-	"version": "1.1.0",
+	"version": "1.0.0",
 	"description": "Transform selected text using AI services (OpenAI GPT, Google Gemini, Anthropic Claude) into structured notes, flowing prose, or actionable to-do lists. Perfect for cleaning up voice-to-text transcriptions.",
 	"main": "main.js",
 	"scripts": {

@@ -43,7 +43,7 @@ export abstract class BaseAIService {
 
         for (let attempt = 1; attempt <= maxRetries; attempt++) {
             try {
-                console.log(`${this.getServiceName()}: Making request (attempt ${attempt}/${maxRetries})`);
+                //console.log(`${this.getServiceName()}: Making request (attempt ${attempt}/${maxRetries})`);
                 
                 const response = await fetch(url, {
                     ...options,
@@ -56,7 +56,7 @@ export abstract class BaseAIService {
                 // Handle rate limiting (429) with exponential backoff
                 if (response.status === 429) {
                     const retryAfter = this.getRetryAfterDelay(response, attempt);
-                    console.log(`${this.getServiceName()}: Rate limited, waiting ${retryAfter}ms before retry`);
+                    //console.log(`${this.getServiceName()}: Rate limited, waiting ${retryAfter}ms before retry`);
                     
                     if (attempt < maxRetries) {
                         await this.sleep(retryAfter);
@@ -69,7 +69,7 @@ export abstract class BaseAIService {
                 // Handle other server errors with retry
                 if (response.status >= 500 && response.status < 600) {
                     const delay = Math.min(1000 * Math.pow(2, attempt - 1), 10000); // Exponential backoff, max 10s
-                    console.log(`${this.getServiceName()}: Server error ${response.status}, waiting ${delay}ms before retry`);
+                    //console.log(`${this.getServiceName()}: Server error ${response.status}, waiting ${delay}ms before retry`);
                     
                     if (attempt < maxRetries) {
                         await this.sleep(delay);
@@ -94,7 +94,7 @@ export abstract class BaseAIService {
                 // Wait before retry (except on last attempt)
                 if (attempt < maxRetries) {
                     const delay = Math.min(1000 * Math.pow(2, attempt - 1), 5000); // Exponential backoff, max 5s
-                    console.log(`${this.getServiceName()}: Waiting ${delay}ms before retry`);
+                    //console.log(`${this.getServiceName()}: Waiting ${delay}ms before retry`);
                     await this.sleep(delay);
                 }
             }
@@ -107,7 +107,7 @@ export abstract class BaseAIService {
         const timeSinceLastRequest = Date.now() - this.lastRequestTime;
         if (timeSinceLastRequest < this.minRequestInterval) {
             const waitTime = this.minRequestInterval - timeSinceLastRequest;
-            console.log(`${this.getServiceName()}: Rate limiting - waiting ${waitTime}ms`);
+            //console.log(`${this.getServiceName()}: Rate limiting - waiting ${waitTime}ms`);
             await this.sleep(waitTime);
         }
     }

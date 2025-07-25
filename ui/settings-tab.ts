@@ -214,7 +214,7 @@ export class AITextFormatterSettingTab extends PluginSettingTab {
                         await this.plugin.settingsManager.saveSettings();
                     });
                 text.inputEl.rows = 4;
-                text.inputEl.style.width = '100%';
+                text.inputEl.className = 'ai-formatter-settings-prompt-textarea';
             })
             .addButton(button => {
                 button
@@ -240,7 +240,7 @@ export class AITextFormatterSettingTab extends PluginSettingTab {
                         await this.plugin.settingsManager.saveSettings();
                     });
                 text.inputEl.rows = 4;
-                text.inputEl.style.width = '100%';
+                text.inputEl.className = 'ai-formatter-settings-prompt-textarea';
             })
             .addButton(button => {
                 button
@@ -266,7 +266,7 @@ export class AITextFormatterSettingTab extends PluginSettingTab {
                         await this.plugin.settingsManager.saveSettings();
                     });
                 text.inputEl.rows = 4;
-                text.inputEl.style.width = '100%';
+                text.inputEl.className = 'ai-formatter-settings-prompt-textarea';
             })
             .addButton(button => {
                 button
@@ -292,7 +292,7 @@ export class AITextFormatterSettingTab extends PluginSettingTab {
                         await this.plugin.settingsManager.saveSettings();
                     });
                 text.inputEl.rows = 4;
-                text.inputEl.style.width = '100%';
+                text.inputEl.className = 'ai-formatter-settings-prompt-textarea';
             })
             .addButton(button => {
                 button
